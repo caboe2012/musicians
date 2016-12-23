@@ -1,3 +1,4 @@
+#uses Python2
 class Musician(object):
     def __init__(self, sounds):
         self.sounds = sounds
@@ -58,3 +59,34 @@ class Band(object):
                 each.solo(duration)
         else:
             print "We totally gotta git a drummer or we'll never be able to play our solos!"
+
+
+# Instantiate Musicians
+tom = Guitarist()
+dick = Bassist()
+harry = Drummer()
+
+# Demo spontaneous combustion method of drummer
+harry.combust()
+
+# Demo count method of the drummer class
+harry.count_up(5)
+
+# Instantiate Band class
+rhcp = Band()
+
+# Show empty band list
+rhcp.members
+
+# Hire Guitarist and Bassist
+rhcp.hire(tom)
+rhcp.hire(dick)
+
+# Try and play solos without a drummer
+rhcp.play_solos(4,6)
+
+# hire a drummer
+rhcp.hire(harry)
+
+# let the hits roll!
+rhcp.play_solos(4,6)
