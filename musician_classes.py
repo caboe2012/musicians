@@ -30,20 +30,31 @@ class Drummer(Musician):
         
     def combust(self):
         print "Oh dear me, it appears I've burst into flames."
-        
+
 
 class Band(object):
     def __init__(self, members = []):
         self.members = members
+    
+    def member_list(self):
+        for member in self.members:
+            print member
     
     def hire(self,member):
         self.members.append(member)
     
     def fire(self,member):
         self.members.remove(member)
-        
-    def play_solos(self,duration):
-        #need to figure out how to check if there is a drummer class in my band
-        crew = [str(type(each)) for each in self.members]
-#        for musician in self.members:
-#            musician.solo(duration)
+    
+    def play_solos(self, drummer_count, duration):
+        # Getting the class name of an instance in python!  Huzzah!
+        # wrong way ->   str(type("instance")) 
+        # right way! ->  type("instance").__name__
+        crew = [type(each).__name__ for each in self.members]
+        if "Drummer" in crew:
+            idx = crew.index("Drummer")
+            self.members[idx].count_up(drummer_count)
+            for each in self.members:
+                each.solo(duration)
+        else:
+            print "We totally gotta git a drummer or we'll never be able to play our solos!"
